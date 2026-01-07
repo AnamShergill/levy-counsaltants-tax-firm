@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { motion, HTMLMotionProps } from 'framer-motion';
+import clsx from 'clsx';
+import { Slot } from '@radix-ui/react-slot'; // optional, for proper asChild support
 
+// Button props
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -12,7 +14,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+// Combine button props + Framer Motion props
+type MotionButtonProps = ButtonProps & HTMLMotionProps<'button'>;
+
+const Button = React.forwardRef<HTMLButtonElement, MotionButtonProps>(
   (
     {
       className,
@@ -21,48 +26,43 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading = false,
       disabled,
       children,
+      asChild = false,
       ...props
     },
     ref
   ) => {
-    const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none';
+    // Base classes
+    const baseClasses =
+      'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none';
 
-    const variantClasses = cn({
-      'bg-navy-700 text-white hover:bg-navy-800': variant === 'primary',
-      'bg-white text-navy-700 border border-navy-200 hover:bg-navy-50': variant === 'secondary',
-      'border-2 border-navy-700 text-navy-700 hover:bg-navy-50': variant === 'outline',
-      'text-navy-700 hover:bg-navy-50': variant === 'ghost',
-    });
-
-    const sizeClasses = cn({
-      'h-9 px-4 py-2 text-sm': size === 'sm',
-      'h-10 px-6 py-2': size === 'md',
-      'h-12 px-8 py-3 text-lg': size === 'lg',
-    });
-
-    const classes = cn(
-      baseClasses,
-      variantClasses,
-      sizeClasses,
-      className
+    // Variant classes
+    const variantClasses = clsx(
+      variant === 'primary' && 'bg-navy-700 text-white hover:bg-navy-800',
+      variant === 'secondary' && 'bg-white text-navy-700 border border-navy-200 hover:bg-navy-50',
+      variant === 'outline' && 'border-2 border-navy-700 text-navy-700 hover:bg-navy-50',
+      variant === 'ghost' && 'text-navy-700 hover:bg-navy-50'
     );
 
-    // If asChild is true, we'll use the child element as the button
-    if (props.asChild && React.isValidElement(children)) {
-      return React.cloneElement(children, {
-        className: cn(children.props.className, classes),
-        disabled: disabled || isLoading,
-        ...props,
-      } as any);
-    }
+    // Size classes
+    const sizeClasses = clsx(
+      size === 'sm' && 'h-9 px-4 py-2 text-sm',
+      size === 'md' && 'h-10 px-6 py-2',
+      size === 'lg' && 'h-12 px-8 py-3 text-lg'
+    );
+
+    // Combine all classes
+    const classes = clsx(baseClasses, variantClasses, sizeClasses, className);
+
+    // Use Radix Slot for asChild support
+    const Comp = asChild ? Slot : motion.button;
 
     return (
-      <motion.button
-        whileHover={variant !== 'ghost' ? { scale: 1.02 } : {}}
-        whileTap={variant !== 'ghost' ? { scale: 0.98 } : {}}
+      <Comp
         className={classes}
         disabled={disabled || isLoading}
         ref={ref}
+        whileHover={!asChild && variant !== 'ghost' ? { scale: 1.02 } : undefined}
+        whileTap={!asChild && variant !== 'ghost' ? { scale: 0.98 } : undefined}
         {...props}
       >
         {isLoading ? (
@@ -92,7 +92,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           children
         )}
-      </motion.button>
+      </Comp>
     );
   }
 );
