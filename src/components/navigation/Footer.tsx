@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image"
 import { Container } from '@/components/ui/Container';
 
 const Footer = () => {
@@ -42,9 +43,15 @@ const Footer = () => {
           {/* Firm Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
-                <span className="text-navy-900 font-bold text-lg">LC</span>
-              </div>
+                <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+      <Image
+        src="/images/logo.png"   // same logo file
+        alt="Levy Consultants Logo"
+        width={50}
+        height={50}
+        className="object-contain"
+      />
+    </div>
               <span className="text-white font-bold text-xl">Levy Counsultants</span>
             </div>
             <p className="text-gray-300">

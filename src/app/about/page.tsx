@@ -1,4 +1,6 @@
 import { Container } from '@/components/ui/Container';
+import Image from 'next/image';
+
 
 export default function AboutPage() {
   return (
@@ -30,51 +32,82 @@ export default function AboutPage() {
           <div className="relative">
             <div className="aspect-video rounded-2xl bg-gradient-to-br from-navy-100 to-gold-100 flex items-center justify-center overflow-hidden shadow-xl">
               {/* Placeholder for about image */}
+  <Image
+  src="/images/about.jpg" // ✅ Now points to public/images/about.jpg
+  alt="Expert Tax Team"
+  fill
+  className="object-cover rounded-2xl"
+/>
+
               <div className="bg-navy-200 border-2 border-dashed rounded-xl w-16 h-16" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white bg-opacity-80 rounded-lg p-6 text-center">
-                  <h3 className="text-xl font-bold text-navy-800 mb-2">Expert Tax Team</h3>
-                  <p className="text-navy-600">Over 15 years of combined experience</p>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-20">
-          <h2 className="text-2xl font-bold text-navy-900 text-center mb-12">Our Core Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
-              <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-navy-900 mb-2">Integrity</h3>
-              <p className="text-gray-600">We maintain the highest ethical standards in all our professional dealings.</p>
-            </div>
+  <h2 className="text-2xl font-bold text-navy-900 text-center mb-12">
+    Our Core Values
+  </h2>
 
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
-              <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-navy-900 mb-2">Excellence</h3>
-              <p className="text-gray-600">We are committed to delivering the highest quality tax services.</p>
-            </div>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
-              <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-navy-900 mb-2">Client Focus</h3>
-              <p className="text-gray-600">We prioritize our clients' needs and work to achieve their financial goals.</p>
-            </div>
-          </div>
-        </div>
+    {/* Integrity */}
+    <div className="group text-center p-8 rounded-2xl bg-sky-50 shadow-lg shadow-navy-900/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-navy-700 hover:shadow-2xl">
+      <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:bg-gold-400">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700 transition-colors duration-500 group-hover:text-navy-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      </div>
+
+      <h3 className="text-lg font-semibold text-navy-900 mb-2 transition-colors duration-500 group-hover:text-white">
+        Integrity
+      </h3>
+
+      <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-200">
+        We maintain the highest ethical standards in all our professional dealings.
+      </p>
+    </div>
+
+    {/* Excellence */}
+    <div className="group text-center p-8 rounded-2xl bg-sky-50 shadow-md shadow-navy-900/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-navy-700 hover:shadow-2xl">
+      <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:bg-gold-400">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700 transition-colors duration-500 group-hover:text-navy-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+
+      <h3 className="text-lg font-semibold text-navy-900 mb-2 transition-colors duration-500 group-hover:text-white">
+        Excellence
+      </h3>
+
+      <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-200">
+        We are committed to delivering the highest quality tax services.
+      </p>
+    </div>
+
+    {/* Client Focus */}
+    <div className="group text-center p-8 rounded-2xl bg-sky-50 shadow-md shadow-navy-900/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-navy-700 hover:shadow-2xl">
+      <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-500 group-hover:bg-gold-400">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-navy-700 transition-colors duration-500 group-hover:text-navy-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+
+      <h3 className="text-lg font-semibold text-navy-900 mb-2 transition-colors duration-500 group-hover:text-white">
+        Client Focus
+      </h3>
+
+      <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-200">
+        We prioritize our clients’ needs and work to achieve their financial goals.
+      </p>
+    </div>
+
+  </div>
+</div>
+
       </Container>
     </div>
   );

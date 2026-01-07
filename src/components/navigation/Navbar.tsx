@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_ITEMS } from '@/lib/constants';
 import { Container } from '@/components/ui/Container';
@@ -31,13 +32,21 @@ const Navbar = () => {
     >
       <Container size="xl">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-navy-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">LC</span>
-            </div>
-            <span className="text-navy-900 font-bold text-xl">LEVY CONSULTANTS</span>
-          </Link>
+         {/* Logo */}
+<Link href="/" className="flex items-center space-x-2">
+  <div className="w-30 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+    <Image
+      src="/images/logo.png"   // place logo inside /public folder
+      alt="Levy Consultants Logo"
+      width={70}
+      height={50}
+      className="object-contain"
+    />
+  </div>
+  <span className="text-navy-900 font-bold text-xl">
+    LEVY CONSULTANTS
+  </span>
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
