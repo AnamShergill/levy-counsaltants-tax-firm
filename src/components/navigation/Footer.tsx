@@ -130,7 +130,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="pt-8 border-t border-navy-700 text-center">
           <p className="text-gray-400">
-            &copy; {currentYear} TaxFirm. All rights reserved.
+            &copy; {currentYear} Levy Consultants. All rights reserved.
           </p>
         </div>
       </Container>
